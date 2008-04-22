@@ -54,6 +54,7 @@ class TurnOnMaker {
   void handleObjects(const edm::Event&);
   void fillPlots(const edm::Event&);
   void bookHistos();
+  void writeHistos();
   //  void finalOperations();
 
 

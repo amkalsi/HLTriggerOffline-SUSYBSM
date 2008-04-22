@@ -557,6 +557,214 @@ void TurnOnMaker::fillPlots(const edm::Event& iEvent)
 // }
 
 
+void
+TurnOnMaker::writeHistos() {
+  gDirectory->cd("/TurnOnCurves/Muon");
+  for(int i=0; i<hHLT1MuonIsoMult.size(); i++) {
+    hHLT1MuonIsoMult[i]->Write();
+    hHLT1MuonIsoPt[i]->Write();
+    hHLT1MuonIsoEta[i]->Write();
+    hHLT1MuonIsoPhi[i]->Write();
+  }
+
+  for(int i=0; i<hHLT1MuonNonIsoMult.size(); i++) {
+    hHLT1MuonNonIsoMult[i]->Write();
+    hHLT1MuonNonIsoPt[i]->Write();
+    hHLT1MuonNonIsoEta[i]->Write();
+    hHLT1MuonNonIsoPhi[i]->Write();
+  }  
+
+
+  hMuonTrackPt->Write();
+  hMuonTrackEta->Write();
+  hMuonTrackPhi->Write();
+  hMuonTrackMult->Write();
+
+  hRecoMuonPt->Write();            
+  hRecoMuonEta->Write();           
+  hRecoMuonPhi->Write();           
+  hRecoMuonMult->Write();          
+
+  hRecoMuonPtBarrel->Write();       
+  hRecoMuonPtEndcap->Write();       
+
+  hRecoMuonEtaPt10->Write();       
+  hRecoMuonEtaPt20->Write();       
+
+
+  for(int i=0; i<hRecoMuonPtAssHLT1MuonIso.size(); i++) {
+    hRecoMuonPtAssHLT1MuonIso[i]->Write();
+    hRecoMuonPtAssHLT1MuonIsoBarrel[i]->Write();
+    hRecoMuonPtAssHLT1MuonIsoEndcap[i]->Write();
+    hRecoMuonEtaAssHLT1MuonIso[i]->Write();
+    hRecoMuonEtaAssHLT1MuonIsoPt10[i]->Write();
+    hRecoMuonEtaAssHLT1MuonIsoPt20[i]->Write();
+  }    
+
+  for(int i=0; i<hRecoMuonPtAssHLT1MuonNonIso.size(); i++) {
+    hRecoMuonPtAssHLT1MuonNonIso[i]->Write();
+    hRecoMuonPtAssHLT1MuonNonIsoBarrel[i]->Write();
+    hRecoMuonPtAssHLT1MuonNonIsoEndcap[i]->Write();
+    hRecoMuonEtaAssHLT1MuonNonIso[i]->Write();
+    hRecoMuonEtaAssHLT1MuonNonIsoPt10[i]->Write();
+    hRecoMuonEtaAssHLT1MuonNonIsoPt20[i]->Write();
+  }  
+
+  // Pt dirtibutions of Reco Muons associated
+  // to Muon tracks used to build the trigger
+  hRecoMuonPtAssMuonTrackIso->Write();
+  hRecoMuonPtAssMuonTrackIsoBarrel->Write();
+  hRecoMuonPtAssMuonTrackIsoEndcap->Write();
+  hRecoMuonPtAssMuonTrackIsoDr2->Write();
+  hRecoMuonPtAssMuonTrackIsoDr2Barrel->Write();
+  hRecoMuonPtAssMuonTrackIsoDr2Endcap->Write();
+  hRecoMuonPtAssMuonTrackIsoDr02->Write();
+  hRecoMuonPtAssMuonTrackIsoDr02Barrel->Write();
+  hRecoMuonPtAssMuonTrackIsoDr02Endcap->Write();
+  hRecoMuonPtAssMuonTrackIsoDr002->Write();
+  hRecoMuonPtAssMuonTrackIsoDr002Barrel->Write();
+  hRecoMuonPtAssMuonTrackIsoDr002Endcap->Write();
+
+  hRecoMuonPtAssMuonTrackNonIso->Write();
+  hRecoMuonPtAssMuonTrackNonIsoBarrel->Write();
+  hRecoMuonPtAssMuonTrackNonIsoEndcap->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr2->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr2Barrel->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr2Endcap->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr02->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr02Barrel->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr02Endcap->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr002->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr002Barrel->Write();
+  hRecoMuonPtAssMuonTrackNonIsoDr002Endcap->Write();
+
+  // Eta dirtibutions of Reco Muons associated
+  // to Muon tracks used to build the trigger
+  hRecoMuonEtaAssMuonTrackIso->Write();
+  hRecoMuonEtaAssMuonTrackIsoPt10->Write();
+  hRecoMuonEtaAssMuonTrackIsoPt20->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr2->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr2Pt10->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr2Pt20->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr02->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr02Pt10->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr02Pt20->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr002->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr002Pt10->Write();
+  hRecoMuonEtaAssMuonTrackIsoDr002Pt20->Write();
+
+  hRecoMuonEtaAssMuonTrackNonIso->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoPt10->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoPt20->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr2->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr2Pt10->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr2Pt20->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr02->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr02Pt10->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr02Pt20->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr002->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr002Pt10->Write();
+  hRecoMuonEtaAssMuonTrackNonIsoDr002Pt20->Write();
+
+
+
+  //Distributions of the Gen Muons
+  hGenMuonPt->Write();             
+  hGenMuonEta->Write();            
+  hGenMuonPhi->Write();            
+  hGenMuonMult->Write();           
+
+
+  hGenMuonPtBarrel->Write();        
+  hGenMuonPtEndcap->Write();        
+
+  hGenMuonEtaPt10->Write();        
+  hGenMuonEtaPt20->Write();        
+
+
+  for(int i=0; i<hGenMuonPtAssHLT1MuonIso.size(); i++) {
+    hGenMuonPtAssHLT1MuonIso[i]->Write();
+    hGenMuonPtAssHLT1MuonIsoBarrel[i]->Write();
+    hGenMuonPtAssHLT1MuonIsoEndcap[i]->Write();
+    hGenMuonEtaAssHLT1MuonIso[i]->Write();
+    hGenMuonEtaAssHLT1MuonIsoPt10[i]->Write();
+    hGenMuonEtaAssHLT1MuonIsoPt20[i]->Write();
+  }
+
+
+  
+  for(int i=0; i<hGenMuonPtAssHLT1MuonNonIso.size(); i++) {
+    hGenMuonPtAssHLT1MuonNonIso[i]->Write();
+    hGenMuonPtAssHLT1MuonNonIsoBarrel[i]->Write();
+    hGenMuonPtAssHLT1MuonNonIsoEndcap[i]->Write();
+    hGenMuonEtaAssHLT1MuonNonIso[i]->Write();
+    hGenMuonEtaAssHLT1MuonNonIsoPt10[i]->Write();
+    hGenMuonEtaAssHLT1MuonNonIsoPt20[i]->Write();
+  }
+
+
+  
+  // Pt dirtibutions of Gen Muons associated
+  // to Muon tracks used to build the trigger
+  hGenMuonPtAssMuonTrackIso->Write();
+  hGenMuonPtAssMuonTrackIsoBarrel->Write();
+  hGenMuonPtAssMuonTrackIsoEndcap->Write();
+  hGenMuonPtAssMuonTrackIsoDr2->Write();
+  hGenMuonPtAssMuonTrackIsoDr2Barrel->Write();
+  hGenMuonPtAssMuonTrackIsoDr2Endcap->Write();
+  hGenMuonPtAssMuonTrackIsoDr02->Write();
+  hGenMuonPtAssMuonTrackIsoDr02Barrel->Write();
+  hGenMuonPtAssMuonTrackIsoDr02Endcap->Write();
+  hGenMuonPtAssMuonTrackIsoDr002->Write();
+  hGenMuonPtAssMuonTrackIsoDr002Barrel->Write();
+  hGenMuonPtAssMuonTrackIsoDr002Endcap->Write();
+
+  hGenMuonPtAssMuonTrackNonIso->Write();
+  hGenMuonPtAssMuonTrackNonIsoBarrel->Write();
+  hGenMuonPtAssMuonTrackNonIsoEndcap->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr2->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr2Barrel->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr2Endcap->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr02->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr02Barrel->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr02Endcap->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr002->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr002Barrel->Write();
+  hGenMuonPtAssMuonTrackNonIsoDr002Endcap->Write();
+
+  // Eta dirtibutions of Gen Muons associated
+  // to Muon tracks used to build the trigger
+  hGenMuonEtaAssMuonTrackIso->Write();
+  hGenMuonEtaAssMuonTrackIsoPt10->Write();
+  hGenMuonEtaAssMuonTrackIsoPt20->Write();
+  hGenMuonEtaAssMuonTrackIsoDr2->Write();
+  hGenMuonEtaAssMuonTrackIsoDr2Pt10->Write();
+  hGenMuonEtaAssMuonTrackIsoDr2Pt20->Write();
+  hGenMuonEtaAssMuonTrackIsoDr02->Write();
+  hGenMuonEtaAssMuonTrackIsoDr02Pt10->Write();
+  hGenMuonEtaAssMuonTrackIsoDr02Pt20->Write();
+  hGenMuonEtaAssMuonTrackIsoDr002->Write();
+  hGenMuonEtaAssMuonTrackIsoDr002Pt10->Write();
+  hGenMuonEtaAssMuonTrackIsoDr002Pt20->Write();
+
+  hGenMuonEtaAssMuonTrackNonIso->Write();
+  hGenMuonEtaAssMuonTrackNonIsoPt10->Write();
+  hGenMuonEtaAssMuonTrackNonIsoPt20->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr2->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr2Pt10->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr2Pt20->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr02->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr02Pt10->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr02Pt20->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr002->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr002Pt10->Write();
+  hGenMuonEtaAssMuonTrackNonIsoDr002Pt20->Write();
+
+
+
+
+
+}
 
 void TurnOnMaker::bookHistos() {
 
