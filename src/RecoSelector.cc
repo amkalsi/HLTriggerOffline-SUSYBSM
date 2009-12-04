@@ -57,15 +57,13 @@ bool RecoSelector::isSelected(const edm::Event& iEvent)
   bool ElectronCutPassed = false;
   for(unsigned int i=0; i<theElectronCollection->size(); i++) {
     GsfElectron electron = (*theElectronCollection)[i];
-    if (electron.isEcalDriven()) {
+    if (electron.ecalDrivenSeed()) {
       float elenergy = electron.superCluster()->energy();
       float elpt = electron.pt() * elenergy / electron.p();
       if(elpt>reco_ptElecMin)  ElectronCutPassed = true;
       LogDebug("RecoSelectorCuts") << "elpt = " << elpt << endl;
     }
     else {
-      float elenergy = 0;
-      float elpt = 0;
       ElectronCutPassed = false;
     }
   }
